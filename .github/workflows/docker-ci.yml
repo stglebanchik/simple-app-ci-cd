@@ -1,0 +1,53 @@
+name: Docker CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # Шаг 1: Получение кода из репозитория
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    # Шаг 2: Настройка Docker Buildx
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+      
+    # Шаг 3: Сборка Docker-образа
+    - name: Build Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        tags: simple-flask-app:ci
+        load: true  # Сохраняем образ в runner для последующих шагов
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        
+    # Шаг 4: Запуск контейнера и проверка работы
+    - name: Run container and test
+      run: |
+        # Запускаем контейнер в фоновом режиме
+        docker run -d -p 5000:5000 --name flask-test simple-flask-app:ci
+        
+        # Даем приложению время на запуск
+        sleep 5
+        
+        # Проверяем ответ приложения
+        response=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:5000)
+        
+        # Останавливаем контейнер
+        docker stop flask-test
+        
+        # Проверяем код ответа
+        if [ "$response" -ne 200 ]; then
+          echo "Error: Application returned $response status code"
+          exit 1
+        else
+          echo "Application is working correctly!"
+        fi

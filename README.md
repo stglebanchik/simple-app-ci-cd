@@ -3,7 +3,7 @@
 
 Этот репозиторий демонстрирует настройку непрерывной интеграции и доставки (CI/CD) для простого Flask-приложения с использованием Docker и GitHub Actions.
 
-![CI Status](https://github.com/stglebanchik/simple-app-ci-cd.git/actions/workflows/docker-ci.yml/badge.svg)
+[![CI Status](https://github.com/stglebanchik/simple-app-ci-cd/actions/workflows/docker-ci.yml/badge.svg?branch=main)](https://github.com/stglebanchik/simple-app-ci-cd/actions/workflows/docker-ci.yml)
 
 ## 📦 Файлы проекта
 

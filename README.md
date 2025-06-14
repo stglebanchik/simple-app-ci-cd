@@ -22,11 +22,11 @@
 
 2. **Построить образ**
     ```bash
-    docker build -t simple‑flask‑app .
+    docker build -t simple-flask-app .
 
 3. **Запустить контейнер**
     ```bash
-    docker run --rm -d -p 5000:5000 --name flask‑app simple‑flask‑app  
+    docker run --rm -d -p 5000:5000 --name flask-app simple-flask-app  
 
 4. **Проверить работу**
     
@@ -40,7 +40,7 @@
 
 5. **Остановка и удаление контейнера**
     ```bash
-    docker stop flask‑app
+    docker stop flask-app
 
 ## ⚙️ Как устроен Dockerfile
 - FROM python:3.12-slim — лёгкий базовый образ с Python 3.12
@@ -54,15 +54,15 @@
 ## 🤖 Описание GitHub Actions Workflow
 - Файл: .github/workflows/docker-ci.yml
 - Триггер: push или pull_request ↦ ветка main
-    # Шаги:
-    1. Checkout code — actions/checkout@v4
-    2. Setup Buildx — docker/setup-buildx-action@v2
-    3. Build image — docker/build-push-action@v4
-        - Тег: simple-flask-app:ci
-        - load: true для последующего запуска
-        - Кэш сборки в GitHub Actions
-    4. Smoke‑test
-        - Запускает контейнер на порту 5000
-        - Ждёт 5 секунд
-        - Делает curl и проверяет HTTP-код 200
-        - Останавливает контейнер и падает при ошибке
+# Шаги:
+1. Checkout code — actions/checkout@v4
+2. Setup Buildx — docker/setup-buildx-action@v2
+3. Build image — docker/build-push-action@v4
+   - Тег: simple-flask-app:ci
+   - load: true для последующего запуска
+   - Кэш сборки в GitHub Actions
+ 4. Smoke‑test
+    - Запускает контейнер на порту 5000
+    - Ждёт 5 секунд
+    - Делает curl и проверяет HTTP-код 200
+    - Останавливает контейнер и падает при ошибке

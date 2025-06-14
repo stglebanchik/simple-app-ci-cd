@@ -54,15 +54,15 @@
 ## 🤖 Описание GitHub Actions Workflow
 - Файл: .github/workflows/docker-ci.yml
 - Триггер: push или pull_request ↦ ветка main
-    # Шаги:
-    1. Checkout code — actions/checkout@v4
-    2. Setup Buildx — docker/setup-buildx-action@v2
-    3. Build image — docker/build-push-action@v4
-        - Тег: simple-flask-app:ci
-        - load: true для последующего запуска
-        - Кэш сборки в GitHub Actions
-    4. Smoke‑test
-        - Запускает контейнер на порту 5000
-        - Ждёт 5 секунд
-        - Делает curl и проверяет HTTP-код 200
-        - Останавливает контейнер и падает при ошибке
+# Шаги:
+1. Checkout code — actions/checkout@v4
+2. Setup Buildx — docker/setup-buildx-action@v2
+3. Build image — docker/build-push-action@v4
+   - Тег: simple-flask-app:ci
+   - load: true для последующего запуска
+   - Кэш сборки в GitHub Actions
+ 4. Smoke‑test
+    - Запускает контейнер на порту 5000
+    - Ждёт 5 секунд
+    - Делает curl и проверяет HTTP-код 200
+    - Останавливает контейнер и падает при ошибке

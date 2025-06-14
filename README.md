@@ -22,11 +22,11 @@
 
 2. **Построить образ**
     ```bash
-    docker build -t simple‑flask‑app .
+    docker build -t simple-flask-app .
 
 3. **Запустить контейнер**
     ```bash
-    docker run --rm -d -p 5000:5000 --name flask‑app simple‑flask‑app  
+    docker run --rm -d -p 5000:5000 --name flask-app simple-flask-app  
 
 4. **Проверить работу**
     

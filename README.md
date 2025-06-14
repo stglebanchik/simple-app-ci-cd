@@ -32,7 +32,9 @@
     
     В браузере: http://localhost:5000
 
-    Или в терминале: curl http://localhost:5000
+    Или в терминале: 
+    ```bash
+    curl http://localhost:5000
     
     Вы должны увидеть: Hello, World from Docker and GitHub Actions!
 

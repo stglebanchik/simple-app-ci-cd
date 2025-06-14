@@ -40,7 +40,7 @@
 
 5. **Остановка и удаление контейнера**
     ```bash
-    docker stop flask‑app
+    docker stop flask-app
 
 ## ⚙️ Как устроен Dockerfile
 - FROM python:3.12-slim — лёгкий базовый образ с Python 3.12

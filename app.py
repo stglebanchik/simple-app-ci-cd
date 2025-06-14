@@ -17,7 +17,7 @@ def home():
         <p>Это простой пример приложения на Flask внутри Docker.</p>
         <ul>
           <li><a href="/about">О приложении</a></li>
-          <li><a href="/echo?msg=Привет">Echo-параметр</a></li>
+          <li><a href="/echo?msg=Привет!!!">Echo-параметр</a></li>
         </ul>
       </body>
     </html>
